@@ -1,39 +1,38 @@
 package ual.hmis.sesion05.ejercicio5;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class TestEjercicio5 {
-	@Test
-	void ListaTest() {
+	@ParameterizedTest
+	@MethodSource("datosDePrueba")
+	void ListaTest(List<String> listaA, List<String> listaB, List<String> resultadoEsperado) {
 		Ejercicio5 e5 = new Ejercicio5();
 
-		ArrayList<String> vacia = new ArrayList<String>();
-		ArrayList<String> A = new ArrayList<String>();
-		ArrayList<String> B = new ArrayList<String>();
-		ArrayList<String> comprobar = new ArrayList<String>();
-
-		A.add("Jose Martinez");
-		A.add("Pedro Padial");
-		A.add("Jose Puertas");
-		A.add("Fran Perez");
-		B.add("Paco Romera");
-		B.add("Ibai Llanos");
-
-		B.add("Fran Perez");
-
-		comprobar.addAll(A);
-		comprobar.add(B.get(0));
-		comprobar.add(B.get(1));
-		comprobar.sort(null);
-
-		Assert.assertEquals(new ArrayList<String>(), e5.listaOrdenadaEstudiantes(vacia, vacia));
-		Assert.assertEquals(B, e5.listaOrdenadaEstudiantes(vacia, B));
-		Assert.assertEquals(A, e5.listaOrdenadaEstudiantes(A, vacia));
-
-		Assert.assertEquals(comprobar, e5.listaOrdenadaEstudiantes(A, B));
-
+		assertEquals(resultadoEsperado, e5.listaOrdenada(listaA, listaB));
 	}
+
+	static Stream<Arguments> datosDePrueba() {
+		List<String> vacia = new ArrayList<>();
+		List<String> A = Arrays.asList("1", "2", "3", "4");
+		List<String> B = Arrays.asList("5", "6", "7");
+		List<String> comprobar = Stream.concat(A.stream(), B.stream()).distinct().sorted().collect(Collectors.toList());
+
+		return Stream.of(
+				Arguments.of(vacia, vacia, new ArrayList<>()),
+				Arguments.of(vacia, B, B),
+				Arguments.of(A, vacia, A),
+				Arguments.of(A, B, comprobar)
+				);
+	}
+
 
 }
