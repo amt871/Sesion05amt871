@@ -24,13 +24,15 @@ public class TestEjercicio5 {
 		List<String> vacia = new ArrayList<>();
 		List<String> A = Arrays.asList("1", "2", "3", "4");
 		List<String> B = Arrays.asList("5", "6", "7");
+		List<String> C = Arrays.asList("1","5", "6", "7");
 		List<String> comprobar = Stream.concat(A.stream(), B.stream()).distinct().sorted().collect(Collectors.toList());
 
 		return Stream.of(
 				Arguments.of(vacia, vacia, new ArrayList<>()),
 				Arguments.of(vacia, B, B),
 				Arguments.of(A, vacia, A),
-				Arguments.of(A, B, comprobar)
+				Arguments.of(A, B, comprobar),
+				Arguments.of(A, C, comprobar)
 				);
 	}
 
