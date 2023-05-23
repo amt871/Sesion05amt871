@@ -11,8 +11,10 @@ public class Ejercicio3 {
 			salida = "********";
 		else if (entrada.length() >= 12 && entrada.length() <= 40)
 			salida = "************";
-		else 
+		else if (entrada.length() > 40 )
 			salida = "password demasiado largo";
+		else 
+			salida = "Longitud no valida";
 		return salida;
 	}
 }
