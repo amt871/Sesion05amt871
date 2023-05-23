@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import ual.hmis.sesion05.ejercicio3.Ejercicio3;
 
 class TestEjercicio3 {
 

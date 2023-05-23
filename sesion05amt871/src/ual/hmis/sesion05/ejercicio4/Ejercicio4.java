@@ -1,31 +1,30 @@
 package ual.hmis.sesion05.ejercicio4;
 
-import java.util.ArrayList;
 
 public class Ejercicio4 {
-	ArrayList<Float> notas = new ArrayList<Float>();
-	ArrayList<String> calificaciones = new ArrayList<String>();
-	
-	public void calculaCalificaciones(ArrayList<Float> notas) {
-		for(Float nota : notas) {
-			this.calificaciones.add(calificacion(nota));
+
+	public int[][] obtenerDiagonales(int[][] matriz) {
+		int length = matriz.length;
+		int[][] diagonales = new int[2][length];
+
+		for (int i = 0; i < length; i++) {
+			diagonales[0][i] = matriz[i][i];             // Diagonal principal
+			diagonales[1][i] = matriz[i][length - 1 - i]; // Diagonal secundaria
 		}
+
+		return diagonales;
 	}
-	
-	public String calificacion (double nota){
-		String calificacion = "";
-		if (nota >= 0 && nota <= 4.9) 
-			calificacion = "Suspenso";
-		else if (nota >= 0 && nota <= 6.9)
-			calificacion = "Aprobado";
-		else if (nota >= 0 && nota <= 8.9)
-			calificacion = "Notable";
-		else if (nota >= 0 && nota <= 9.9)
-			calificacion = "Sobresaliente";
-		else if (nota >= 0 && nota == 10)
-			calificacion = "Matricula";
-		else
-			calificacion = "Error en la nota";
-		return calificacion;
+
+	public double[] sumarColumnas(double[][] matriz) {
+		int length = matriz.length;
+		double[] sumas = new double[length];
+
+		for (int i = 0; i < length; i++) {
+			for (int j = 0; j < length; j++) {
+				sumas[i] += matriz[j][i]; // Suma la columna
+			}
 		}
+
+		return sumas;
+	}
 }

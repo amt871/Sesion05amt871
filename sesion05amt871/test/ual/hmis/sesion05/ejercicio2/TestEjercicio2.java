@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 
-class Ejercicio2Test {
+class TestEjercicio2 {
 
 	Ejercicio2 ejercicio2 = new Ejercicio2();
 
