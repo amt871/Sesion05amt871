@@ -8,13 +8,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 class TestEjercicio1 {
 
 	@ParameterizedTest (name = "{index} => transformar({0})")
-	@CsvSource({"210,7"})
+	 @CsvSource({
+	        "2, 1",
+	        "3, 1",
+	        "5, 1",
+	        "7, 7"
+	    })
 	void test1(int input, int expected) {
 		//Arrange
-		Ejercicio1 e1 = new Ejercicio1();
-		//Act
-		int result = e1.transformar(input);
-		//Assert
-		assertEquals(expected,result);
+		Ejercicio1 aux = new Ejercicio1();
+		
+		assertEquals(expected, aux.transformar(input));
 	}
 }

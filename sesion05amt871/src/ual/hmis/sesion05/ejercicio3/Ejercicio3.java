@@ -4,7 +4,7 @@ public class Ejercicio3 {
 
 	public String password (String entrada) {
 		String salida = "";
-		
+
 		if (entrada.length() < 5)
 			salida = "password demasiado corto";
 		else if (entrada.length() <= 8)

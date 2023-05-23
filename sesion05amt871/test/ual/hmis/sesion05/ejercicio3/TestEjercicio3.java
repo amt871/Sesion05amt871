@@ -8,17 +8,15 @@ import ual.hmis.sesion05.ejercicio3.Ejercicio3;
 
 class TestEjercicio3 {
 
-	@ParameterizedTest (name = "{index} => password")
-	@CsvSource({"a,password demasiado corto","pokpok,********", 
-		"lkmlkmlkmlkmlkm,************",
-		"asdf654asdf654asdf6544asdf654asdf654asdf654asdf654as6d5f4as6d5f4a6s5d4f,password demasiado largo"})
+	@ParameterizedTest (name = "{index} => password = {0} , esperado = {1}")
+	@CsvSource({"1,password demasiado corto",
+		"1234567,********", 
+		"123456789012034,************",
+		"12345678901234567890123456789012345678901234567890,password demasiado largo"})
 	
-	void testPassword(String entrada, String expected) {
-		//Arrange
-		Ejercicio3 e3 = new Ejercicio3();
-		//Act
-		String result = e3.password(entrada);
-		//Assert
-		assertEquals(result,expected);
+	void testPassword(String entrada, String esperado) {
+		
+		Ejercicio3 aux = new Ejercicio3();
+		assertEquals(esperado, aux.password(entrada));
 	}
 }
