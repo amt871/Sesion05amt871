@@ -1,6 +1,6 @@
 package ual.hmis.sesion05.ejercicio5;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class TestEjercicio5 {
 	void ListaTest(List<String> listaA, List<String> listaB, List<String> resultadoEsperado) {
 		Ejercicio5 e5 = new Ejercicio5();
 
-		assertEquals(resultadoEsperado, e5.listaOrdenada(listaA, listaB));
+		assertEquals(true, e5.listaOrdenada(listaA, listaB).equals(resultadoEsperado));
 	}
 
 	static Stream<Arguments> datosDePrueba() {
